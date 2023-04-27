@@ -95,6 +95,7 @@
             btnKayit.Size = new Size(180, 50);
             btnKayit.TabIndex = 1;
             btnKayit.UseVisualStyleBackColor = true;
+            btnKayit.Click += btnKayit_Click;
             // 
             // btnGiris
             // 
@@ -106,6 +107,7 @@
             btnGiris.Size = new Size(180, 50);
             btnGiris.TabIndex = 2;
             btnGiris.UseVisualStyleBackColor = true;
+            btnGiris.Click += btnGiris_Click;
             // 
             // pictureBox5
             // 
@@ -410,6 +412,7 @@
             Name = "KayitEkran";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "KayitEkran";
+            Load += KayitEkran_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox5).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
