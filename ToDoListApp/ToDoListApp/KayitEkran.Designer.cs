@@ -45,7 +45,7 @@
             txtDogumTarihi = new TextBox();
             txtSifre = new TextBox();
             txtCinsiyet = new TextBox();
-            txtSifreT = new TextBox();
+            txtSifreTekrar = new TextBox();
             txtTelNO = new TextBox();
             txtAd = new TextBox();
             txtTC = new TextBox();
@@ -247,17 +247,17 @@
             txtCinsiyet.Text = "Cinsiyet:";
             txtCinsiyet.TextAlign = HorizontalAlignment.Center;
             // 
-            // txtSifreT
+            // txtSifreTekrar
             // 
-            txtSifreT.BackColor = Color.FromArgb(199, 198, 198);
-            txtSifreT.BorderStyle = BorderStyle.None;
-            txtSifreT.ForeColor = Color.DimGray;
-            txtSifreT.Location = new Point(549, 298);
-            txtSifreT.Name = "txtSifreT";
-            txtSifreT.Size = new Size(166, 16);
-            txtSifreT.TabIndex = 20;
-            txtSifreT.Text = "Şifre Tekrar:";
-            txtSifreT.TextAlign = HorizontalAlignment.Center;
+            txtSifreTekrar.BackColor = Color.FromArgb(199, 198, 198);
+            txtSifreTekrar.BorderStyle = BorderStyle.None;
+            txtSifreTekrar.ForeColor = Color.DimGray;
+            txtSifreTekrar.Location = new Point(549, 298);
+            txtSifreTekrar.Name = "txtSifreTekrar";
+            txtSifreTekrar.Size = new Size(166, 16);
+            txtSifreTekrar.TabIndex = 20;
+            txtSifreTekrar.Text = "Şifre Tekrar:";
+            txtSifreTekrar.TextAlign = HorizontalAlignment.Center;
             // 
             // txtTelNO
             // 
@@ -390,7 +390,7 @@
             Controls.Add(txtTC);
             Controls.Add(txtAd);
             Controls.Add(txtTelNO);
-            Controls.Add(txtSifreT);
+            Controls.Add(txtSifreTekrar);
             Controls.Add(txtCinsiyet);
             Controls.Add(txtSifre);
             Controls.Add(txtDogumTarihi);
@@ -453,7 +453,7 @@
         private TextBox txtDogumTarihi;
         private TextBox txtSifre;
         private TextBox txtCinsiyet;
-        private TextBox txtSifreT;
+        private TextBox txtSifreTekrar;
         private TextBox txtTelNO;
         private TextBox txtAd;
         private TextBox txtTC;

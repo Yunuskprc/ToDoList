@@ -24,30 +24,30 @@ namespace ToDoListApp
 
         private void KayitEkran_Load(object sender, EventArgs e)
         {
-            ToolTip aciklama1 = new ToolTip();
-            aciklama1.SetToolTip(pctInfoKAdi, "En az 8 harfli olmalıdır.");
+            ToolTip ToolTipKAdi = new ToolTip();
+            ToolTipKAdi.SetToolTip(pctInfoKAdi, "En az 8 harfli olmalıdır.");
 
-            ToolTip aciklama2 = new ToolTip();
-            aciklama2.SetToolTip(pctInfoSifre, "En az 8 harfli olmalıdır.");
+            ToolTip ToolTipSifre = new ToolTip();
+            ToolTipSifre.SetToolTip(pctInfoSifre, "En az 8 harfli olmalıdır.");
 
-            ToolTip aciklama3 = new ToolTip();
-            aciklama3.SetToolTip(pctInfoDate, "XXXX-XX-XX şeklinde olmalıdır.");
+            ToolTip ToolTipDate = new ToolTip();
+            ToolTipDate.SetToolTip(pctInfoDate, "XXXX-XX-XX şeklinde olmalıdır.");
 
-            ToolTip aciklama4 = new ToolTip();
-            aciklama4.SetToolTip(pctInfoCinsiyet, "erkek/kadın şeklinde olmalıdır.");
+            ToolTip ToolTipCinsiyet = new ToolTip();
+            ToolTipCinsiyet.SetToolTip(pctInfoCinsiyet, "erkek/kadın şeklinde olmalıdır.");
 
-            ToolTip aciklama5 = new ToolTip();
-            aciklama5.SetToolTip(pctInfoTelNO, "5XXXXXXXXX şeklinde olmalıdır.");
+            ToolTip ToolTipTelNo = new ToolTip();
+            ToolTipTelNo.SetToolTip(pctInfoTelNO, "5XXXXXXXXX şeklinde olmalıdır.");
 
-            ToolTip aciklama6 = new ToolTip();
-            aciklama6.SetToolTip(pctInfoMail, "en az 5 karakterli olmalı ve gmail/hotmail/outlook uzantısında olmalıdır");
+            ToolTip ToolTipMail = new ToolTip();
+            ToolTipMail.SetToolTip(pctInfoMail, "en az 5 karakterli olmalı ve gmail/hotmail/outlook uzantısında olmalıdır");
         }
 
         private void btnKayit_Click(object sender, EventArgs e)
         {
             String Kadi = txtKAdi.Text; // yapıldı
             String Sifre = txtSifre.Text;//yapıldı
-            String SifreT = txtSifreT.Text;
+            String SifreTekrar = txtSifreT.Text;
             String ad = txtAd.Text;
             String soyad = txtSoyad.Text;
             String DogumTarih = txtDogumTarihi.Text;//yapıldı
@@ -64,7 +64,7 @@ namespace ToDoListApp
                 SqlConnection conn = new SqlConnection("Server=localhost\\SQLEXPRESS;Database=Calendar;Trusted_Connection=True;");
                 SqlCommand comm = new SqlCommand(Sorgu, conn);
 
-                if (Sifre == SifreT)
+                if (Sifre == SifreTekrar)
                 {
                     kontrol = true;
                 }
@@ -117,7 +117,7 @@ namespace ToDoListApp
                 if (kontrol)
                 {
                     MessageBox.Show("Kayıt Başarılı ");
-                    KayitEkle(Kadi, Sifre, SifreT, ad, soyad, DogumTarih, Cinsiyet, TelNo, TC, Mail);
+                    KayitEkle(Kadi, Sifre, SifreTekrar, ad, soyad, DogumTarih, Cinsiyet, TelNo, TC, Mail);
                 }
                 else
                 {
