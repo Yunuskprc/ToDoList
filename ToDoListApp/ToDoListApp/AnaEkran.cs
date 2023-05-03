@@ -140,7 +140,23 @@ namespace ToDoListApp
                 MessageBox.Show("Hatalı Veri Girişi Tekrar Deneyin");
         }
 
+        private void cmbbxSehir_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            pctbxHavaDurumu.Visible = true;
+            lblHavaDurumu.Visible = true;
+            lblDerece.Visible = true;
+            pctbxHavaDurumu.Image = null;
+            weather nesneW = new weather();
+            lblDerece.Text = nesneW.derece(cmbbxSehir.Text, "https://api.openweathermap.org/data/2.5/weather?q=" + cmbbxSehir.Text + "&mode=xml&lang=tr&units=metric&appid=ee724f154bf1f447a19184aaf85b1f92");
+            lblHavaDurumu.Text = nesneW.havatipi(cmbbxSehir.Text, "https://api.openweathermap.org/data/2.5/weather?q=" + cmbbxSehir.Text + "&mode=xml&lang=tr&units=metric&appid=ee724f154bf1f447a19184aaf85b1f92");
+            pctbxHavaDurumu.Image = nesneW.resimDondur(cmbbxSehir.Text, "https://api.openweathermap.org/data/2.5/weather?q=" + cmbbxSehir.Text + "&mode=xml&lang=tr&units=metric&appid=ee724f154bf1f447a19184aaf85b1f92");
 
+
+            if (lblHavaDurumu.Text.Length > 10)
+                lblHavaDurumu.Location = new Point(74, 226);
+            else
+                lblHavaDurumu.Location = new Point(125, 226);
+        }
 
 
 
@@ -653,5 +669,7 @@ namespace ToDoListApp
             secilenGun = Int16.Parse(button1.Text);
             buttonCode(anlikAy);
         }
+
+
     }
 }

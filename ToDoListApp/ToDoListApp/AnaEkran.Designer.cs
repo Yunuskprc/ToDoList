@@ -54,6 +54,10 @@
             lblPnl3Saat1 = new Label();
             label10 = new Label();
             lblHavaDurumu = new Label();
+            cmbbxSehir = new ComboBox();
+            label9 = new Label();
+            lblDerece = new Label();
+            pctbxHavaDurumu = new PictureBox();
             pnlAddToDo = new Panel();
             lblpnl2Ay = new Label();
             btnCloseTodo = new Button();
@@ -65,10 +69,6 @@
             lblsaat = new Label();
             lblpnl2Gun = new Label();
             pictureBox2 = new PictureBox();
-            cmbbxSehir = new ComboBox();
-            label9 = new Label();
-            lblDerece = new Label();
-            pctbxHavaDurumu = new PictureBox();
             button43 = new Button();
             lblYil = new Label();
             label8 = new Label();
@@ -127,10 +127,10 @@
             pictureBox1 = new PictureBox();
             panel1.SuspendLayout();
             pnl3ToDoList.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pctbxHavaDurumu).BeginInit();
             pnlAddToDo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pctbxHavaDurumu).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -441,6 +441,52 @@
             lblHavaDurumu.Text = "fırtınalı";
             lblHavaDurumu.Visible = false;
             // 
+            // cmbbxSehir
+            // 
+            cmbbxSehir.BackColor = Color.FromArgb(45, 51, 73);
+            cmbbxSehir.FlatStyle = FlatStyle.Flat;
+            cmbbxSehir.ForeColor = Color.FromArgb(254, 254, 255);
+            cmbbxSehir.FormattingEnabled = true;
+            cmbbxSehir.Items.AddRange(new object[] { "İstanbul", "İzmir", "Ankara", "Manisa", "Trabzon", "Antalya", "Elazığ", "Diyarbakır", "Samsun", "Aydın", "Muğla", "Adana", "Sivas", "Sakarya" });
+            cmbbxSehir.Location = new Point(211, 12);
+            cmbbxSehir.Name = "cmbbxSehir";
+            cmbbxSehir.Size = new Size(121, 23);
+            cmbbxSehir.TabIndex = 7;
+            cmbbxSehir.SelectedIndexChanged += cmbbxSehir_SelectedIndexChanged;
+            // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.Font = new Font("Segoe UI Semibold", 14F, FontStyle.Bold, GraphicsUnit.Point);
+            label9.ForeColor = Color.FromArgb(254, 254, 255);
+            label9.Location = new Point(176, 191);
+            label9.Name = "label9";
+            label9.Size = new Size(31, 25);
+            label9.TabIndex = 2;
+            label9.Text = "C°";
+            label9.Visible = false;
+            // 
+            // lblDerece
+            // 
+            lblDerece.AutoSize = true;
+            lblDerece.Font = new Font("Segoe UI Semibold", 14F, FontStyle.Bold, GraphicsUnit.Point);
+            lblDerece.ForeColor = Color.FromArgb(254, 254, 255);
+            lblDerece.Location = new Point(125, 191);
+            lblDerece.Name = "lblDerece";
+            lblDerece.Size = new Size(58, 25);
+            lblDerece.TabIndex = 1;
+            lblDerece.Text = "13.65";
+            lblDerece.Visible = false;
+            // 
+            // pctbxHavaDurumu
+            // 
+            pctbxHavaDurumu.Location = new Point(116, 69);
+            pctbxHavaDurumu.Name = "pctbxHavaDurumu";
+            pctbxHavaDurumu.Size = new Size(111, 119);
+            pctbxHavaDurumu.TabIndex = 0;
+            pctbxHavaDurumu.TabStop = false;
+            pctbxHavaDurumu.Visible = false;
+            // 
             // pnlAddToDo
             // 
             pnlAddToDo.Controls.Add(lblpnl2Ay);
@@ -569,51 +615,6 @@
             pictureBox2.Size = new Size(130, 40);
             pictureBox2.TabIndex = 4;
             pictureBox2.TabStop = false;
-            // 
-            // cmbbxSehir
-            // 
-            cmbbxSehir.BackColor = Color.FromArgb(45, 51, 73);
-            cmbbxSehir.FlatStyle = FlatStyle.Flat;
-            cmbbxSehir.ForeColor = Color.FromArgb(254, 254, 255);
-            cmbbxSehir.FormattingEnabled = true;
-            cmbbxSehir.Items.AddRange(new object[] { "İstanbul", "İzmir", "Ankara", "Manisa", "Trabzon", "Antalya", "Elazığ", "Diyarbakır", "Samsun", "Aydın", "Muğla", "Adana", "Sivas", "Sakarya" });
-            cmbbxSehir.Location = new Point(211, 12);
-            cmbbxSehir.Name = "cmbbxSehir";
-            cmbbxSehir.Size = new Size(121, 23);
-            cmbbxSehir.TabIndex = 7;
-            // 
-            // label9
-            // 
-            label9.AutoSize = true;
-            label9.Font = new Font("Segoe UI Semibold", 14F, FontStyle.Bold, GraphicsUnit.Point);
-            label9.ForeColor = Color.FromArgb(254, 254, 255);
-            label9.Location = new Point(176, 191);
-            label9.Name = "label9";
-            label9.Size = new Size(31, 25);
-            label9.TabIndex = 2;
-            label9.Text = "C°";
-            label9.Visible = false;
-            // 
-            // lblDerece
-            // 
-            lblDerece.AutoSize = true;
-            lblDerece.Font = new Font("Segoe UI Semibold", 14F, FontStyle.Bold, GraphicsUnit.Point);
-            lblDerece.ForeColor = Color.FromArgb(254, 254, 255);
-            lblDerece.Location = new Point(125, 191);
-            lblDerece.Name = "lblDerece";
-            lblDerece.Size = new Size(58, 25);
-            lblDerece.TabIndex = 1;
-            lblDerece.Text = "13.65";
-            lblDerece.Visible = false;
-            // 
-            // pctbxHavaDurumu
-            // 
-            pctbxHavaDurumu.Location = new Point(116, 69);
-            pctbxHavaDurumu.Name = "pctbxHavaDurumu";
-            pctbxHavaDurumu.Size = new Size(111, 119);
-            pctbxHavaDurumu.TabIndex = 0;
-            pctbxHavaDurumu.TabStop = false;
-            pctbxHavaDurumu.Visible = false;
             // 
             // button43
             // 
@@ -1383,11 +1384,11 @@
             panel1.PerformLayout();
             pnl3ToDoList.ResumeLayout(false);
             pnl3ToDoList.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pctbxHavaDurumu).EndInit();
             pnlAddToDo.ResumeLayout(false);
             pnlAddToDo.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pctbxHavaDurumu).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
