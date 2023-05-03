@@ -16,7 +16,7 @@ namespace ToDoListApp
     {
 
         static int cinsiyet, personelId = 2;
-        
+
         public KayitEkran()
         {
             InitializeComponent();
@@ -47,7 +47,7 @@ namespace ToDoListApp
         {
             String Kadi = txtKAdi.Text; // yapıldı
             String Sifre = txtSifre.Text;//yapıldı
-            String SifreTekrar = txtSifreT.Text;
+            String SifreTekrar = txtSifreTekrar.Text;
             String ad = txtAd.Text;
             String soyad = txtSoyad.Text;
             String DogumTarih = txtDogumTarihi.Text;//yapıldı
@@ -57,7 +57,7 @@ namespace ToDoListApp
             String Mail = txtMail.Text;//yapıldı
             Boolean kontrol;
 
-
+            //doğru bilgi girişi 
             if (BilgiKontrol(DogumTarih, DogumTarih.Length, "DogumTarih") && BilgiKontrol(TC, TC.Length, "TC") && BilgiKontrol(TelNo, TelNo.Length, "TelNo") && BilgiKontrol(Cinsiyet, Cinsiyet.Length, "Cinsiyet") && BilgiKontrol(Kadi, Kadi.Length, "Kadi") && BilgiKontrol(Sifre, Sifre.Length, "Sifre"))
             {
                 String Sorgu = "SELECT *FROM Users ";
@@ -114,6 +114,7 @@ namespace ToDoListApp
                         }
                     }
                 }
+                
                 if (kontrol)
                 {
                     MessageBox.Show("Kayıt Başarılı ");

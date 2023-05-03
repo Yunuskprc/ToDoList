@@ -136,4 +136,55 @@
   <data name="info" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\info.jpeg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="back15px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\back15px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ButtonHoliday40px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ButtonHoliday40px.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ButtonHolidayNational40px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ButtonHolidayNational40px.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ButtonTask40px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ButtonTask40px.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="closeButtonTodo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\closeButtonTodo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="havaBulutlu" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\havaBulutlu.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="havaFirtina" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\havaFirtina.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="havaGunesli" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\havaGunesli.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="havaKarli" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\havaKarli.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="havaParcaliBulutlu" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\havaParcaliBulutlu.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="havaSisli" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\havaSisli.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="havaYagmurlu" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\havaYagmurlu.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="next15px" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\next15px.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="resim1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\resim1.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="roundedButtonAddTask" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\roundedButtonAddTask.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="roundedRectangleToDo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\roundedRectangleToDo.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="roundedRectangleToDoMulti" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\roundedRectangleToDoMulti.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>
