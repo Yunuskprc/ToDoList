@@ -167,9 +167,9 @@ namespace ToDoListApp
             lblDerece.Visible = true;
             pctbxHavaDurumu.Image = null;
             weather nesneW = new weather();
-            lblDerece.Text = nesneW.derece(cmbbxSehir.Text, "https://api.openweathermap.org/data/2.5/weather?q=" + cmbbxSehir.Text + "&mode=xml&lang=tr&units=metric&appid=ee724f154bf1f447a19184aaf85b1f92");
-            lblHavaDurumu.Text = nesneW.havatipi(cmbbxSehir.Text, "https://api.openweathermap.org/data/2.5/weather?q=" + cmbbxSehir.Text + "&mode=xml&lang=tr&units=metric&appid=ee724f154bf1f447a19184aaf85b1f92");
-            pctbxHavaDurumu.Image = nesneW.resimDondur(cmbbxSehir.Text, "https://api.openweathermap.org/data/2.5/weather?q=" + cmbbxSehir.Text + "&mode=xml&lang=tr&units=metric&appid=ee724f154bf1f447a19184aaf85b1f92");
+            lblDerece.Text = nesneW.Derece(cmbbxSehir.Text, "https://api.openweathermap.org/data/2.5/weather?q=" + cmbbxSehir.Text + "&mode=xml&lang=tr&units=metric&appid=ee724f154bf1f447a19184aaf85b1f92");
+            lblHavaDurumu.Text = nesneW.HavaTipi(cmbbxSehir.Text, "https://api.openweathermap.org/data/2.5/weather?q=" + cmbbxSehir.Text + "&mode=xml&lang=tr&units=metric&appid=ee724f154bf1f447a19184aaf85b1f92");
+            pctbxHavaDurumu.Image = nesneW.HavaTipiResmiDondur(cmbbxSehir.Text, "https://api.openweathermap.org/data/2.5/weather?q=" + cmbbxSehir.Text + "&mode=xml&lang=tr&units=metric&appid=ee724f154bf1f447a19184aaf85b1f92");
 
 
             if (lblHavaDurumu.Text.Length > 10)

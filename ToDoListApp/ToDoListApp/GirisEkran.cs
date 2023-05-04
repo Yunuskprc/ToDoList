@@ -45,6 +45,11 @@ namespace ToDoListApp
             conn.Close();
         }
 
+        /// <summary>
+        /// SHA-256 şifreleme algoirtması ile parametre olarak girilen stringi şifreler
+        /// </summary>
+        /// <param name="rawData">Şifrelenecek Değişken</param>
+        /// <returns>64 karakterli şifrelenmiş metin döndürür</returns>
         static string ComputeSha256Hash(string rawData)
         {
             // Create a SHA256

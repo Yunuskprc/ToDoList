@@ -10,7 +10,14 @@ namespace ToDoListApp
     internal class weather
     {
         static string havaTip;
-        public string derece(string sehir, string connection)
+
+        /// <summary>
+        /// Çekilen veriden derece değerini geri döndürür
+        /// </summary>
+        /// <param name="sehir">Sorgusu yapılacak sehir adı</param>
+        /// <param name="connection">API adresi</param>
+        /// <returns>Derece Değerini string olarak geri döndürür</returns>
+        public string Derece(string sehir, string connection)
         {
             XDocument weather = XDocument.Load(connection);
             var temp = weather.Descendants("temperature").ElementAt(0).Attribute("value").Value;
@@ -18,7 +25,13 @@ namespace ToDoListApp
 
         }
 
-        public string havatipi(string sehir, string connection)
+        /// <summary>
+        /// Çekilen veriden hava tipi değerini geri döndürür
+        /// </summary>
+        /// <param name="sehir">Sorgusu yapılacak sehir adı</param>
+        /// <param name="connection">API adresi</param>
+        /// <returns>Hava tipini string olarak geri döndürür</returns>
+        public string HavaTipi(string sehir, string connection)
         {
             XDocument weather = XDocument.Load(connection);
             var temp2 = weather.Descendants("clouds").ElementAt(0).Attribute("name").Value;
@@ -26,8 +39,13 @@ namespace ToDoListApp
             return temp2.ToUpper();
         }
 
-        // resim ekleme kaldı resimleri kırpıp ayarlamak
-        public Image resimDondur(string sehir, string connection)
+        /// <summary>
+        /// Hava tipine göre geriye resim döndürür.
+        /// </summary>
+        /// <param name="sehir">Sorgusu yapılacak sehir adı</param>
+        /// <param name="connection">API adresi</param>
+        /// <returns></returns>
+        public Image HavaTipiResmiDondur(string sehir, string connection)
         {
             Image img = null;
             switch (havaTip)

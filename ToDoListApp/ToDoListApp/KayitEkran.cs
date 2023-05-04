@@ -119,7 +119,7 @@ namespace ToDoListApp
                 if (kontrol)
                 {
                     MessageBox.Show("Kayıt Başarılı ");
-                    KayitEkle(kAdi, sifre, sifreTekrar, ad, soyad, dogumTarih, cinsiyet, telNo, tc, mail);
+                    KayitEkle(kAdi, sifre, ad, soyad, dogumTarih, cinsiyet, telNo, tc, mail);
                 }
                 else
                 {
@@ -131,7 +131,11 @@ namespace ToDoListApp
                 MessageBox.Show("Hatalı veri girişi tekrar deneyin");
         }
 
-
+        /// <summary>
+        /// SHA-256 şifreleme algoirtması ile parametre olarak girilen stringi şifreler
+        /// </summary>
+        /// <param name="rawData">Şifrelenecek Değişken</param>
+        /// <returns>64 karakterli şifrelenmiş metin döndürür</returns>
         static string ComputeSha256Hash(string rawData)
         {
             // Create a SHA256   
@@ -256,6 +260,18 @@ namespace ToDoListApp
         }
 
 
+        /// <summary>
+        /// Kayıt olacak kişinin bilgilerini veritabanınına kaydeder.
+        /// </summary>
+        /// <param name="kAdi">Kullanıcı Adı</param>
+        /// <param name="sifre">sifre</param>
+        /// <param name="ad">İsim</param>
+        /// <param name="soyad">Soy isim</param>
+        /// <param name="dogumTarih">doğum tarihi</param>
+        /// <param name="cinsiyet">cinsiyet</param>
+        /// <param name="telNo">telefon numarası</param>
+        /// <param name="tc">TC kimlik no</param>
+        /// <param name="mail">mail adresi</param>
         private void KayitEkle(String kAdi, String sifre, String ad, String soyad, String dogumTarih, String cinsiyet, String telNo, String tc, String mail)
         {
 
