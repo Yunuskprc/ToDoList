@@ -81,6 +81,9 @@ namespace ToDoListApp
         {
             bool kontrol = true;
             string str = txtbxSaat.Text;
+            int saatKontrol, dakikaKontrol;
+            
+
             if (txtbxSaat.Text.Length == 5)
             {
 
@@ -114,42 +117,56 @@ namespace ToDoListApp
 
             if (kontrol)
             {
-                // saattextbox ını saat ve dakika int e çevirme
-                int dakika = 0, saat = 0;
-                if (txtbxSaat.Text[0] == '0')
+                saatKontrol = Int16.Parse(str[0].ToString()) * 10 + Int16.Parse(str[1].ToString());
+                dakikaKontrol = Int16.Parse(str[3].ToString()) * 10 + Int16.Parse(str[4].ToString());
+
+                // saat ve dakika değerleri doğru girilmiş mi kontrol ediliyor.
+                if (saatKontrol <= 24 && dakikaKontrol <= 60)
                 {
-                    saat = Int16.Parse(txtbxSaat.Text[1].ToString());
-                    if (txtbxSaat.Text[3] == '0')
-                        dakika = Int16.Parse(txtbxSaat.Text[4].ToString());
+                    int dakika = 0, saat = 0;
+                    // saattextbox ını saat ve dakika int e çevirme
+                    
+                    if (txtbxSaat.Text[0] == '0')
+                    {
+                        saat = Int16.Parse(txtbxSaat.Text[1].ToString());
+                        if (txtbxSaat.Text[3] == '0')
+                            dakika = Int16.Parse(txtbxSaat.Text[4].ToString());
+                        else
+                            dakika = Int16.Parse(txtbxSaat.Text[3].ToString()) * 10 + Int16.Parse(txtbxSaat.Text[4].ToString());
+                    }
                     else
-                        dakika = Int16.Parse(txtbxSaat.Text[3].ToString()) * 10 + Int16.Parse(txtbxSaat.Text[4].ToString());
+                    {
+                        saat = Int16.Parse(txtbxSaat.Text[0].ToString()) * 10 + Int16.Parse(txtbxSaat.Text[1].ToString());
+                        if (txtbxSaat.Text[3] == '0')
+                            dakika = Int16.Parse(txtbxSaat.Text[4].ToString());
+                        else
+                            dakika = Int16.Parse(txtbxSaat.Text[3].ToString()) * 10 + Int16.Parse(txtbxSaat.Text[4].ToString());
+                    }
+
+
+                    SqlConnection conn = new SqlConnection("Server=localhost\\SQLEXPRESS;Database=Calendar;Trusted_Connection=True;");
+                    SqlCommand sqlCommand = new SqlCommand("insert into ToDo (ay,gün,saat,dakika,görev) values ('" + anlikAy + "','" + secilenGun + "','" + saat + "','" + dakika + "','" + txtbxgörev.Text + "')", conn);
+                    conn.Open();
+                    sqlCommand.ExecuteNonQuery();
+                    conn.Close();
+                    pnlAddToDo.Visible = false;
+                    GunlukGorevListeleme(secilenGun, anlikAy);
+
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand("update " + aylar[anlikAy - 1] + " set tip=@tip where gunNo=@gün", conn);
+                    cmd.Parameters.AddWithValue("@tip", 1);
+                    cmd.Parameters.AddWithValue("@gün", secilenGun);
+                    cmd.ExecuteNonQuery();
+                    conn.Close();
+
+
                 }
                 else
                 {
-                    saat = Int16.Parse(txtbxSaat.Text[0].ToString()) * 10 + Int16.Parse(txtbxSaat.Text[1].ToString());
-                    if (txtbxSaat.Text[3] == '0')
-                        dakika = Int16.Parse(txtbxSaat.Text[4].ToString());
-                    else
-                        dakika = Int16.Parse(txtbxSaat.Text[3].ToString()) * 10 + Int16.Parse(txtbxSaat.Text[4].ToString());
+                    MessageBox.Show("Hatalı Veri Girişi Tekrar Deneyin");
                 }
 
-
-                SqlConnection conn = new SqlConnection("Server=localhost\\SQLEXPRESS;Database=Calendar;Trusted_Connection=True;");
-                SqlCommand sqlCommand = new SqlCommand("insert into ToDo (ay,gün,saat,dakika,görev) values ('" + anlikAy + "','" + secilenGun + "','" + saat + "','" + dakika + "','" + txtbxgörev.Text + "')", conn);
-                conn.Open();
-                sqlCommand.ExecuteNonQuery();
-                conn.Close();
-                pnlAddToDo.Visible = false;
-                GunlukGorevListeleme(secilenGun, anlikAy);
-
-                conn.Open();
-                SqlCommand cmd = new SqlCommand("update " + aylar[anlikAy - 1] + " set tip=@tip where gunNo=@gün", conn);
-                cmd.Parameters.AddWithValue("@tip", 1);
-                cmd.Parameters.AddWithValue("@gün", secilenGun);
-                cmd.ExecuteNonQuery();
-                conn.Close();
-
-
+                
             }
             else
                 MessageBox.Show("Hatalı Veri Girişi Tekrar Deneyin");

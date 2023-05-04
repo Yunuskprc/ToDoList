@@ -34,8 +34,8 @@ namespace ToDoListApp
             if (rd.Read())
             {
                 MessageBox.Show("Giriş Basarılı..");
-                KayitEkran nKayitEkran = new KayitEkran();
-                nKayitEkran.Show();
+                AnaEkran nAnaEkran = new AnaEkran();
+                nAnaEkran.Show();
                 this.Hide();
             }
             else
