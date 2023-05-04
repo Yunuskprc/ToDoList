@@ -31,6 +31,11 @@ namespace ToDoListApp
             TakvimDuzenle();
         }
 
+        /// <summary>
+        /// Takvimde Sonraki Aya geçiş için kullanılır.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnMonthNext_Click(object sender, EventArgs e)
         {
             if (anlikAy != 12)
@@ -42,6 +47,11 @@ namespace ToDoListApp
             }
         }
 
+        /// <summary>
+        /// Tabloda Önceki aya geçmek için kullanılır.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnMonthBack_Click(object sender, EventArgs e)
         {
             if (anlikAy != 1)
@@ -62,6 +72,11 @@ namespace ToDoListApp
             // buradan sonra pnl3 ün kodları olmalı
         }
 
+        /// <summary>
+        /// Seçilen güne ait görev ekleme butonu
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnAddTodo_Click(object sender, EventArgs e)
         {
             bool kontrol = true;
@@ -140,6 +155,11 @@ namespace ToDoListApp
                 MessageBox.Show("Hatalı Veri Girişi Tekrar Deneyin");
         }
 
+        /// <summary>
+        /// Seçilen şehire göre Anlık hava durumu bilgisini ayarlar.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void cmbbxSehir_SelectedIndexChanged(object sender, EventArgs e)
         {
             pctbxHavaDurumu.Visible = true;
@@ -162,6 +182,10 @@ namespace ToDoListApp
 
 
 
+
+        /// <summary>
+        /// ay değişimi sonrası buttonları başlangıç pozisyonuna göre ayarlar.
+        /// </summary>
         private void Sifirla()
         {
             Button[] btnList = {button1,button2,button3,button4,button5,button6,button7,button8,button9,button10,
@@ -175,7 +199,9 @@ namespace ToDoListApp
             }
         }
 
-
+        /// <summary>
+        /// Takvim Oluşturur ve Özel Günleri Belirtir
+        /// </summary>
         private void TakvimDuzenle()
         {
             //1.aşama seçilen aya ait günleri bastırır.
@@ -327,7 +353,10 @@ namespace ToDoListApp
             con.Close();
         }
 
-
+        /// <summary>
+        /// Datetime.now.Month değişkenini string olarak geri döndürür.
+        /// </summary>
+        /// <returns></returns>
         private string AyDondur(int sayi)
         {
             string str = "";
@@ -343,7 +372,12 @@ namespace ToDoListApp
             return str;
         }
 
-
+        /// <summary>
+        /// takvimdeki özel günler için günlerin resimleri değiştirir
+        /// </summary>
+        /// <param name="tip">Özel gün türünü tutar</param>
+        /// <param name="btnlist"></param>
+        /// <param name="i">Hangi butonun resmini değiştireceğini saklar</param>
         private void DayBackGroundImage(int tip, Button[] btnList, int i)
         {
             switch (tip)
@@ -366,7 +400,11 @@ namespace ToDoListApp
             }
         }
 
-
+        /// <summary>
+        /// Seçilen güne ait görev varsa o güne ait görevleri ilgili panelde gösterir
+        /// </summary>
+        /// <param name="gun">secilen gün</param>
+        /// <param name="ay">secilen ay</param>
         private void GunlukGorevListeleme(int gun, int ay)
         {
             // lbldakikalisti döngüde düzeltmek lazım
@@ -392,7 +430,10 @@ namespace ToDoListApp
             conn.Close();
         }
 
-
+        /// <summary>
+        /// Seçilen gün için yapılacak eylemleri yapan metottur
+        /// </summary>
+        /// <param name="ay"></param>
         private void ButtonCode(int ay)
         {
             Label[] lblSaatList = { lblPnl3Saat1, lblPnl3Saat2, lblPnl3Saat3, lblPnl3Saat4, lblPnl3Saat5, lblPnl3Saat6, lblPnl3Saat7 };

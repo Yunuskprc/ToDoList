@@ -24,6 +24,7 @@ namespace ToDoListApp
 
         private void KayitEkran_Load(object sender, EventArgs e)
         {
+            // İnfo resimlerinin açıklamaları
             ToolTip ToolTipKAdi = new ToolTip();
             ToolTipKAdi.SetToolTip(pctInfoKAdi, "En az 8 harfli olmalıdır.");
 
@@ -45,26 +46,26 @@ namespace ToDoListApp
 
         private void btnKayit_Click(object sender, EventArgs e)
         {
-            String Kadi = txtKAdi.Text; // yapıldı
-            String Sifre = txtSifre.Text;//yapıldı
-            String SifreTekrar = txtSifreTekrar.Text;
+            String kAdi = txtKAdi.Text; // yapıldı
+            String sifre = txtSifre.Text;//yapıldı
+            String sifreTekrar = txtSifreTekrar.Text;
             String ad = txtAd.Text;
             String soyad = txtSoyad.Text;
-            String DogumTarih = txtDogumTarihi.Text;//yapıldı
-            String Cinsiyet = txtCinsiyet.Text;//yapıldı
-            String TelNo = txtTelNO.Text;//yapıldı
-            String TC = txtTC.Text;//yapıldı
-            String Mail = txtMail.Text;//yapıldı
+            String dogumTarih = txtDogumTarihi.Text;//yapıldı
+            String cinsiyet = txtCinsiyet.Text;//yapıldı
+            String telNo = txtTelNO.Text;//yapıldı
+            String tc = txtTC.Text;//yapıldı
+            String mail = txtMail.Text;//yapıldı
             Boolean kontrol;
 
             //doğru bilgi girişi 
-            if (BilgiKontrol(DogumTarih, DogumTarih.Length, "DogumTarih") && BilgiKontrol(TC, TC.Length, "TC") && BilgiKontrol(TelNo, TelNo.Length, "TelNo") && BilgiKontrol(Cinsiyet, Cinsiyet.Length, "Cinsiyet") && BilgiKontrol(Kadi, Kadi.Length, "Kadi") && BilgiKontrol(Sifre, Sifre.Length, "Sifre"))
+            if (BilgiKontrol(dogumTarih, dogumTarih.Length, "DogumTarih") && BilgiKontrol(tc, tc.Length, "TC") && BilgiKontrol(telNo, telNo.Length, "TelNo") && BilgiKontrol(cinsiyet, cinsiyet.Length, "Cinsiyet") && BilgiKontrol(kAdi, kAdi.Length, "Kadi") && BilgiKontrol(sifre, sifre.Length, "Sifre"))
             {
-                String Sorgu = "SELECT *FROM Users ";
+                String sorgu = "SELECT *FROM Users ";
                 SqlConnection conn = new SqlConnection("Server=localhost\\SQLEXPRESS;Database=Calendar;Trusted_Connection=True;");
-                SqlCommand comm = new SqlCommand(Sorgu, conn);
+                SqlCommand comm = new SqlCommand(sorgu, conn);
 
-                if (Sifre == SifreTekrar)
+                if (sifre == sifreTekrar)
                 {
                     kontrol = true;
                 }
@@ -80,28 +81,28 @@ namespace ToDoListApp
                 {
                     personelId = Int16.Parse(dr["PersonelId"].ToString());
 
-                    if (dr["KullaniciAdi"].Equals(Kadi))
+                    if (dr["KullaniciAdi"].Equals(kAdi))
                     {
                         kontrol = false;
                         break;
                     }
                     else
                     {
-                        if (dr["telNo"].Equals(TelNo))
+                        if (dr["telNo"].Equals(telNo))
                         {
                             kontrol = false;
                             break;
                         }
                         else
                         {
-                            if (TC.Equals(dr["TC"]))
+                            if (tc.Equals(dr["TC"]))
                             {
                                 kontrol = false;
                                 break;
                             }
                             else
                             {
-                                if (Mail.Equals(dr["mail"]))
+                                if (mail.Equals(dr["mail"]))
                                 {
                                     kontrol = false;
                                     break;
@@ -118,7 +119,7 @@ namespace ToDoListApp
                 if (kontrol)
                 {
                     MessageBox.Show("Kayıt Başarılı ");
-                    KayitEkle(Kadi, Sifre, SifreTekrar, ad, soyad, DogumTarih, Cinsiyet, TelNo, TC, Mail);
+                    KayitEkle(kAdi, sifre, sifreTekrar, ad, soyad, dogumTarih, cinsiyet, telNo, tc, mail);
                 }
                 else
                 {
@@ -156,6 +157,13 @@ namespace ToDoListApp
             this.Hide();
         }
 
+        /// <summary>
+        /// Kayıt için girilen bilgilerini sorgular
+        /// </summary>
+        /// <param name="str">sorgulanacak veri</param>
+        /// <param name="lenght">sorgulanacak veri uzunluğu</param>
+        /// <param name="tur">sorgulanacak veri türü</param>
+        /// <returns></returns>
         static bool BilgiKontrol(string str, int lenght, string tur)
         {
             bool kontrol = false;
@@ -247,12 +255,13 @@ namespace ToDoListApp
             return kontrol;
         }
 
-        private void KayitEkle(String Kadi, String Sifre, String SifreT, String ad, String soyad, String DogumTarih, String Cinsiyet, String TelNo, String TC, String Mail)
+
+        private void KayitEkle(String kAdi, String sifre, String ad, String soyad, String dogumTarih, String cinsiyet, String telNo, String tc, String mail)
         {
 
             SqlConnection conn = new SqlConnection("Server=localhost\\SQLEXPRESS;Database=Calendar;Trusted_Connection=True;");
             conn.Open();
-            SqlCommand comm = new SqlCommand("insert into Users (PersonelId,KullaniciAdi,Sifre,Ad,Soyad,telNo,TC,mail,cinsiyet,dogumTarih) values ('" + (personelId + 1) + "','" + Kadi + "','" + ComputeSha256Hash(Sifre) + "','" + ad + "','" + soyad + "','" + TelNo + "','" + TC + "','" + Mail + "','" + cinsiyet + "','" + DogumTarih + "')", conn); // eksik
+            SqlCommand comm = new SqlCommand("insert into Users (PersonelId,KullaniciAdi,Sifre,Ad,Soyad,telNo,TC,mail,cinsiyet,dogumTarih) values ('" + (personelId + 1) + "','" + kAdi + "','" + ComputeSha256Hash(sifre) + "','" + ad + "','" + soyad + "','" + telNo + "','" + tc + "','" + mail + "','" + KayitEkran.cinsiyet + "','" + dogumTarih + "')", conn); // eksik
             comm.ExecuteNonQuery();
             conn.Close();
         }

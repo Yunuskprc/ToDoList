@@ -21,10 +21,10 @@ namespace ToDoListApp
 
         private void btnGiris_Click(object sender, EventArgs e)
         {
-            String KullaniciAdi = txtbxKAdi.Text;
-            String Sifre = ComputeSha256Hash(txtbxSifre.Text);
+            String kullaniciAdi = txtbxKAdi.Text;
+            String sifre = ComputeSha256Hash(txtbxSifre.Text);
 
-            String sorgu = "SELECT *FROM Users where KullaniciAdi='" + KullaniciAdi + "' AND Sifre='" + Sifre + "'";
+            String sorgu = "SELECT *FROM Users where KullaniciAdi='" + kullaniciAdi + "' AND Sifre='" + sifre + "'";
 
             SqlConnection conn = new SqlConnection("Server = localhost\\SQLEXPRESS;Database=Calendar;Trusted_Connection=True;");
             SqlCommand cmd = new SqlCommand(sorgu, conn);
