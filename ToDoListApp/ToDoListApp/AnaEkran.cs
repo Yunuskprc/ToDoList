@@ -25,20 +25,20 @@ namespace ToDoListApp
         private void AnaEkran_Load(object sender, EventArgs e)
         {
             cmbbxSehir.Text = "İstanbul";
-            sifirla();
+            Sifirla();
             anlikAy = DateTime.Now.Month;
-            label8.Text = aydondur(anlikAy);
-            takvimDuzenle();
+            label8.Text = AyDondur(anlikAy);
+            TakvimDuzenle();
         }
 
         private void btnMonthNext_Click(object sender, EventArgs e)
         {
             if (anlikAy != 12)
             {
-                sifirla();
+                Sifirla();
                 anlikAy++;
-                label8.Text = aydondur(anlikAy);
-                takvimDuzenle();
+                label8.Text = AyDondur(anlikAy);
+                TakvimDuzenle();
             }
         }
 
@@ -46,10 +46,10 @@ namespace ToDoListApp
         {
             if (anlikAy != 1)
             {
-                sifirla();
+                Sifirla();
                 anlikAy--;
-                label8.Text = aydondur(anlikAy);
-                takvimDuzenle();
+                label8.Text = AyDondur(anlikAy);
+                TakvimDuzenle();
             }
         }
 
@@ -162,25 +162,25 @@ namespace ToDoListApp
 
 
 
-        private void sifirla()
+        private void Sifirla()
         {
-            Button[] btnlist = {button1,button2,button3,button4,button5,button6,button7,button8,button9,button10,
+            Button[] btnList = {button1,button2,button3,button4,button5,button6,button7,button8,button9,button10,
             button11,button12,button13,button14,button15,button16,button17,button18,button19,button20,button21,
             button22,button23,button24,button25,button26,button27,button28,button29,button30,button31,button32,
             button33,button34,button35,button36,button37,button38,button39,button40,button41,button42};
-            for (int i = 0; i < btnlist.Length; i++)
+            for (int i = 0; i < btnList.Length; i++)
             {
-                btnlist[i].Visible = false;
-                btnlist[i].Text = null;
+                btnList[i].Visible = false;
+                btnList[i].Text = null;
             }
         }
 
 
-        private void takvimDuzenle()
+        private void TakvimDuzenle()
         {
             //1.aşama seçilen aya ait günleri bastırır.
             string sorgu = "";
-            Button[] btnlist = {button1,button2,button3,button4,button5,button6,button7,button8,button9,button10,
+            Button[] btnList = {button1,button2,button3,button4,button5,button6,button7,button8,button9,button10,
             button11,button12,button13,button14,button15,button16,button17,button18,button19,button20,button21,
             button22,button23,button24,button25,button26,button27,button28,button29,button30,button31,button32,
             button33,button34,button35,button36,button37,button38,button39,button40,button41,button42};
@@ -200,22 +200,22 @@ namespace ToDoListApp
 
                 if (i == 0) // ilk gün için ilgli butonu bulur ve değerleri atar.
                 {
-                    btnlist[gunAdi - 1].Visible = true;
-                    btnlist[gunAdi - 1].Text = gunNo.ToString();
-                    btnlist[gunAdi - 1].Enabled = true;
-                    btnlist[gunAdi - 1].ForeColor = Color.Black;
+                    btnList[gunAdi - 1].Visible = true;
+                    btnList[gunAdi - 1].Text = gunNo.ToString();
+                    btnList[gunAdi - 1].Enabled = true;
+                    btnList[gunAdi - 1].ForeColor = Color.Black;
                     i = gunAdi;
                     ilkGun = gunAdi - 1;
-                    takvimBackgroundImage(tip, btnlist, gunAdi - 1);
+                    DayBackGroundImage(tip, btnList, gunAdi - 1);
                 }
                 else // kalan günler için sırayla butonları doldurur.
                 {
-                    btnlist[i - 1].Visible = true;
-                    btnlist[i - 1].Enabled = true;
-                    btnlist[i - 1].Text = gunNo.ToString();
-                    btnlist[i - 1].ForeColor = Color.Black;
+                    btnList[i - 1].Visible = true;
+                    btnList[i - 1].Enabled = true;
+                    btnList[i - 1].Text = gunNo.ToString();
+                    btnList[i - 1].ForeColor = Color.Black;
                     sonGun = i - 1;
-                    takvimBackgroundImage(tip, btnlist, i - 1);
+                    DayBackGroundImage(tip, btnList, i - 1);
                 }
                 i++;
             }
@@ -257,10 +257,10 @@ namespace ToDoListApp
                 s1 = Int16.Parse(rd["gunNo"].ToString());
                 if (s1 > (count - ilkGun))
                 {
-                    btnlist[i].Visible = true;
-                    btnlist[i].Text = rd["gunNo"].ToString();
-                    btnlist[i].ForeColor = System.Drawing.Color.FromArgb(192, 192, 192);
-                    btnlist[i].Enabled = false;
+                    btnList[i].Visible = true;
+                    btnList[i].Text = rd["gunNo"].ToString();
+                    btnList[i].ForeColor = System.Drawing.Color.FromArgb(192, 192, 192);
+                    btnList[i].Enabled = false;
                     i++;
                 }
                 s1++;
@@ -274,8 +274,6 @@ namespace ToDoListApp
 
 
 
-            //hata var çalışmıyor.
-            // 3. aşama seçilen aydan sonraki ayın ilk günlerini ekrana bastırır.
             con.Open();
             bool kontrol = false;
 
@@ -300,12 +298,12 @@ namespace ToDoListApp
                 {
                     if (sonGun + i >= 35)
                         break;
-                    if (btnlist[i].Text != null)
+                    if (btnList[i].Text != null)
                     {
-                        btnlist[sonGun + i].Visible = true;
-                        btnlist[sonGun + i].Text = rd["gunNo"].ToString();
-                        btnlist[sonGun + i].ForeColor = System.Drawing.Color.FromArgb(192, 192, 192);
-                        btnlist[sonGun + i].Enabled = false;
+                        btnList[sonGun + i].Visible = true;
+                        btnList[sonGun + i].Text = rd["gunNo"].ToString();
+                        btnList[sonGun + i].ForeColor = System.Drawing.Color.FromArgb(192, 192, 192);
+                        btnList[sonGun + i].Enabled = false;
                     }
                     i++;
                 }
@@ -316,12 +314,12 @@ namespace ToDoListApp
                     //35.butonun dolu olup 36.cının boş olduğu senaryoda boşuna son satırı doldurmak için kontrol yapılıyor
                     if (button36.Visible == false)
                         break;
-                    if (btnlist[i].Text != null)
+                    if (btnList[i].Text != null)
                     {
-                        btnlist[sonGun + i].Visible = true;
-                        btnlist[sonGun + i].Text = rd["gunNo"].ToString();
-                        btnlist[sonGun + i].ForeColor = System.Drawing.Color.FromArgb(192, 192, 192);
-                        btnlist[sonGun + i].Enabled = false;
+                        btnList[sonGun + i].Visible = true;
+                        btnList[sonGun + i].Text = rd["gunNo"].ToString();
+                        btnList[sonGun + i].ForeColor = System.Drawing.Color.FromArgb(192, 192, 192);
+                        btnList[sonGun + i].Enabled = false;
                     }
                     i++;
                 }
@@ -330,7 +328,7 @@ namespace ToDoListApp
         }
 
 
-        private string aydondur(int sayi)
+        private string AyDondur(int sayi)
         {
             string str = "";
             for (int i = 0; i < 12; i++)
@@ -346,24 +344,24 @@ namespace ToDoListApp
         }
 
 
-        private void takvimBackgroundImage(int tip, Button[] btnlist, int i)
+        private void DayBackGroundImage(int tip, Button[] btnList, int i)
         {
             switch (tip)
             {
                 case 1:
-                    btnlist[i].BackgroundImage = ToDoListApp.Properties.Resources.ButtonTask40px;
+                    btnList[i].BackgroundImage = ToDoListApp.Properties.Resources.ButtonTask40px;
                     break;
 
                 case 2:
-                    btnlist[i].BackgroundImage = ToDoListApp.Properties.Resources.ButtonHolidayNational40px;
+                    btnList[i].BackgroundImage = ToDoListApp.Properties.Resources.ButtonHolidayNational40px;
                     break;
 
                 case 3:
-                    btnlist[i].BackgroundImage = ToDoListApp.Properties.Resources.ButtonHoliday40px;
+                    btnList[i].BackgroundImage = ToDoListApp.Properties.Resources.ButtonHoliday40px;
                     break;
 
                 default:
-                    btnlist[i].BackgroundImage = null;
+                    btnList[i].BackgroundImage = null;
                     break;
             }
         }
@@ -395,7 +393,7 @@ namespace ToDoListApp
         }
 
 
-        private void buttonCode(int ay)
+        private void ButtonCode(int ay)
         {
             Label[] lblSaatList = { lblPnl3Saat1, lblPnl3Saat2, lblPnl3Saat3, lblPnl3Saat4, lblPnl3Saat5, lblPnl3Saat6, lblPnl3Saat7 };
             Label[] lblGorevList = { lblPnl3Gorev1, lblPnl3Gorev2, lblPnl3Gorev3, lblPnl3Gorev4, lblPnl3Gorev5, lblPnl3Gorev6, lblPnl3Gorev7 };
@@ -409,7 +407,7 @@ namespace ToDoListApp
             pnl3ToDoList.Visible = true;
             txtbxgörev.Text = "";
             txtbxSaat.Text = "";
-            lblpnl2Ay.Text = aydondur(ay);
+            lblpnl2Ay.Text = AyDondur(ay);
             lblpnl2Gun.Text = secilenGun.ToString();
             pnlAddToDo.Visible = true;
         }
@@ -421,253 +419,253 @@ namespace ToDoListApp
         private void button28_Click(object sender, EventArgs e)
         {
             secilenGun = Int16.Parse(button28.Text);
-            buttonCode(anlikAy);
+            ButtonCode(anlikAy);
         }
 
         private void button37_Click(object sender, EventArgs e)
         {
             secilenGun = Int16.Parse(button37.Text);
-            buttonCode(anlikAy);
+            ButtonCode(anlikAy);
         }
 
         private void button38_Click(object sender, EventArgs e)
         {
             secilenGun = Int16.Parse(button38.Text);
-            buttonCode(anlikAy);
+            ButtonCode(anlikAy);
         }
 
         private void button39_Click(object sender, EventArgs e)
         {
             secilenGun = Int16.Parse(button39.Text);
-            buttonCode(anlikAy);
+            ButtonCode(anlikAy);
         }
 
         private void button40_Click(object sender, EventArgs e)
         {
             secilenGun = Int16.Parse(button40.Text);
-            buttonCode(anlikAy);
+            ButtonCode(anlikAy);
         }
 
         private void button41_Click(object sender, EventArgs e)
         {
             secilenGun = Int16.Parse(button41.Text);
-            buttonCode(anlikAy);
+            ButtonCode(anlikAy);
         }
 
         private void button42_Click(object sender, EventArgs e)
         {
             secilenGun = Int16.Parse(button42.Text);
-            buttonCode(anlikAy);
+            ButtonCode(anlikAy);
         }
 
         private void button29_Click(object sender, EventArgs e)
         {
             secilenGun = Int16.Parse(button29.Text);
-            buttonCode(anlikAy);
+            ButtonCode(anlikAy);
         }
 
         private void button30_Click(object sender, EventArgs e)
         {
             secilenGun = Int16.Parse(button30.Text);
-            buttonCode(anlikAy);
+            ButtonCode(anlikAy);
         }
 
         private void button31_Click(object sender, EventArgs e)
         {
             secilenGun = Int16.Parse(button31.Text);
-            buttonCode(anlikAy);
+            ButtonCode(anlikAy);
         }
 
         private void button32_Click(object sender, EventArgs e)
         {
             secilenGun = Int16.Parse(button32.Text);
-            buttonCode(anlikAy);
+            ButtonCode(anlikAy);
         }
 
         private void button33_Click(object sender, EventArgs e)
         {
             secilenGun = Int16.Parse(button33.Text);
-            buttonCode(anlikAy);
+            ButtonCode(anlikAy);
         }
 
         private void button34_Click(object sender, EventArgs e)
         {
             secilenGun = Int16.Parse(button34.Text);
-            buttonCode(anlikAy);
+            ButtonCode(anlikAy);
         }
 
         private void button35_Click(object sender, EventArgs e)
         {
             secilenGun = Int16.Parse(button35.Text);
-            buttonCode(anlikAy);
+            ButtonCode(anlikAy);
         }
 
         private void button22_Click(object sender, EventArgs e)
         {
             secilenGun = Int16.Parse(button22.Text);
-            buttonCode(anlikAy);
+            ButtonCode(anlikAy);
         }
 
         private void button23_Click(object sender, EventArgs e)
         {
             secilenGun = Int16.Parse(button23.Text);
-            buttonCode(anlikAy);
+            ButtonCode(anlikAy);
         }
 
         private void button24_Click(object sender, EventArgs e)
         {
             secilenGun = Int16.Parse(button24.Text);
-            buttonCode(anlikAy);
+            ButtonCode(anlikAy);
         }
 
         private void button25_Click(object sender, EventArgs e)
         {
             secilenGun = Int16.Parse(button25.Text);
-            buttonCode(anlikAy);
+            ButtonCode(anlikAy);
         }
 
         private void button26_Click(object sender, EventArgs e)
         {
             secilenGun = Int16.Parse(button26.Text);
-            buttonCode(anlikAy);
+            ButtonCode(anlikAy);
         }
 
         private void button27_Click(object sender, EventArgs e)
         {
             secilenGun = Int16.Parse(button27.Text);
-            buttonCode(anlikAy);
+            ButtonCode(anlikAy);
         }
 
         private void button36_Click(object sender, EventArgs e)
         {
             secilenGun = Int16.Parse(button36.Text);
-            buttonCode(anlikAy);
+            ButtonCode(anlikAy);
         }
 
         private void button15_Click(object sender, EventArgs e)
         {
             secilenGun = Int16.Parse(button15.Text);
-            buttonCode(anlikAy);
+            ButtonCode(anlikAy);
         }
 
         private void button16_Click(object sender, EventArgs e)
         {
             secilenGun = Int16.Parse(button16.Text);
-            buttonCode(anlikAy);
+            ButtonCode(anlikAy);
         }
 
         private void button17_Click(object sender, EventArgs e)
         {
             secilenGun = Int16.Parse(button17.Text);
-            buttonCode(anlikAy);
+            ButtonCode(anlikAy);
         }
 
         private void button18_Click(object sender, EventArgs e)
         {
             secilenGun = Int16.Parse(button18.Text);
-            buttonCode(anlikAy);
+            ButtonCode(anlikAy);
         }
 
         private void button19_Click(object sender, EventArgs e)
         {
             secilenGun = Int16.Parse(button19.Text);
-            buttonCode(anlikAy);
+            ButtonCode(anlikAy);
         }
 
         private void button20_Click(object sender, EventArgs e)
         {
             secilenGun = Int16.Parse(button20.Text);
-            buttonCode(anlikAy);
+            ButtonCode(anlikAy);
         }
 
         private void button21_Click(object sender, EventArgs e)
         {
             secilenGun = Int16.Parse(button21.Text);
-            buttonCode(anlikAy);
+            ButtonCode(anlikAy);
         }
 
         private void button8_Click(object sender, EventArgs e)
         {
             secilenGun = Int16.Parse(button8.Text);
-            buttonCode(anlikAy);
+            ButtonCode(anlikAy);
         }
 
         private void button9_Click(object sender, EventArgs e)
         {
             secilenGun = Int16.Parse(button9.Text);
-            buttonCode(anlikAy);
+            ButtonCode(anlikAy);
         }
 
         private void button10_Click(object sender, EventArgs e)
         {
             secilenGun = Int16.Parse(button10.Text);
-            buttonCode(anlikAy);
+            ButtonCode(anlikAy);
         }
 
         private void button11_Click(object sender, EventArgs e)
         {
             secilenGun = Int16.Parse(button11.Text);
-            buttonCode(anlikAy);
+            ButtonCode(anlikAy);
         }
 
         private void button12_Click(object sender, EventArgs e)
         {
             secilenGun = Int16.Parse(button12.Text);
-            buttonCode(anlikAy);
+            ButtonCode(anlikAy);
         }
 
         private void button13_Click(object sender, EventArgs e)
         {
             secilenGun = Int16.Parse(button13.Text);
-            buttonCode(anlikAy);
+            ButtonCode(anlikAy);
         }
 
         private void button14_Click(object sender, EventArgs e)
         {
             secilenGun = Int16.Parse(button14.Text);
-            buttonCode(anlikAy);
+            ButtonCode(anlikAy);
         }
 
         private void button7_Click(object sender, EventArgs e)
         {
             secilenGun = Int16.Parse(button7.Text);
-            buttonCode(anlikAy);
+            ButtonCode(anlikAy);
         }
 
         private void button6_Click(object sender, EventArgs e)
         {
             secilenGun = Int16.Parse(button6.Text);
-            buttonCode(anlikAy);
+            ButtonCode(anlikAy);
         }
 
         private void button5_Click(object sender, EventArgs e)
         {
             secilenGun = Int16.Parse(button5.Text);
-            buttonCode(anlikAy);
+            ButtonCode(anlikAy);
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
             secilenGun = Int16.Parse(button4.Text);
-            buttonCode(anlikAy);
+            ButtonCode(anlikAy);
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
             secilenGun = Int16.Parse(button3.Text);
-            buttonCode(anlikAy);
+            ButtonCode(anlikAy);
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             secilenGun = Int16.Parse(button2.Text);
-            buttonCode(anlikAy);
+            ButtonCode(anlikAy);
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             secilenGun = Int16.Parse(button1.Text);
-            buttonCode(anlikAy);
+            ButtonCode(anlikAy);
         }
 
 
