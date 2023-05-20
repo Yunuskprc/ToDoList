@@ -22,6 +22,9 @@ namespace ToDoListApp
         int anlikAy = 0;
         int secilenGun = 0;
 
+        List<string> toDoTarih = new List<string>();
+        List<string> toDoGorev = new List<string>();
+
         private void AnaEkran_Load(object sender, EventArgs e)
         {
             cmbbxSehir.Text = "İstanbul";
@@ -29,6 +32,8 @@ namespace ToDoListApp
             anlikAy = DateTime.Now.Month;
             label8.Text = AyDondur(anlikAy);
             TakvimDuzenle();
+            HatirlatmaGorev();
+            timer1.Start();
         }
 
         /// <summary>
@@ -82,7 +87,7 @@ namespace ToDoListApp
             bool kontrol = true;
             string str = txtbxSaat.Text;
             int saatKontrol, dakikaKontrol;
-            
+
 
             if (txtbxSaat.Text.Length == 5)
             {
@@ -125,7 +130,7 @@ namespace ToDoListApp
                 {
                     int dakika = 0, saat = 0;
                     // saattextbox ını saat ve dakika int e çevirme
-                    
+
                     if (txtbxSaat.Text[0] == '0')
                     {
                         saat = Int16.Parse(txtbxSaat.Text[1].ToString());
@@ -166,7 +171,7 @@ namespace ToDoListApp
                     MessageBox.Show("Hatalı Veri Girişi Tekrar Deneyin");
                 }
 
-                
+
             }
             else
                 MessageBox.Show("Hatalı Veri Girişi Tekrar Deneyin");
@@ -726,6 +731,89 @@ namespace ToDoListApp
             ButtonCode(anlikAy);
         }
 
+        int timerSayac = 0;
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            if(timerSayac == 2)
+            {
+                pnl.Visible = true;
+            }
 
+            if(timerSayac == 5)
+            {
+                pnl.Visible = false;
+                pnl.Controls.Clear();
+                timer1.Stop();
+            }
+
+            timerSayac++;
+        }
+
+        Panel pnl = new Panel();
+
+        private void HatirlatmaGorev()
+        {
+            DateTime dt = DateTime.Now;
+            int ay, gun, saat;
+            ay = dt.Month;
+            gun = dt.Day;
+            saat = 9;
+            SqlConnection conn = new SqlConnection("Server=localhost\\SQLEXPRESS;Database=Calendar;Trusted_Connection=True;");
+            conn.Open();
+            SqlCommand cmd = new SqlCommand("SELECT *FROM ToDo", conn);
+            SqlDataReader rd = cmd.ExecuteReader();
+            while (rd.Read())
+            {
+                if (ay.ToString() == rd["ay"].ToString() && gun.ToString() == rd["gün"].ToString())
+                {
+                    if (saat <= int.Parse(rd["saat"].ToString()))
+                    {
+                        toDoTarih.Add("2023/" + ay + "/" + gun + " - " + rd["saat"].ToString() + "/" + rd["dakika"].ToString());
+                        toDoGorev.Add(rd["görev"].ToString());
+                    }
+                }
+            }
+            conn.Close();
+
+
+            // hatırlatma paneli
+
+            pnl.Size = new Size(300, 220);
+            pnl.Location = new Point(545, 237);
+            Controls.Add(pnl);
+            pnl.BackColor = Color.FromArgb(210, 219, 219);
+            pnl.BringToFront();
+            pnl.BorderStyle = BorderStyle.None;
+
+            Label lblGorev = new Label();
+            pnl.Controls.Add(lblGorev);
+            lblGorev.Location = new Point(120, 15);
+            lblGorev.Text = "Günlük" + " Görevler";
+            lblGorev.ForeColor = Color.Black;
+            lblGorev.Font = new Font("Segoe UI Semibold", 9, FontStyle.Bold);
+            lblGorev.BringToFront();
+
+
+            for (int i = 0; i < toDoGorev.Count; i++)
+            {
+                Label lbl = new Label();
+                pnl.Controls.Add(lbl);
+                lbl.Location = new Point(20, 50 + (i + 1) * 30);
+                lbl.Text = toDoTarih[i];
+                lbl.ForeColor = Color.Black;
+                lbl.Font = new Font("Segoe UI Semibold", 7, FontStyle.Bold);
+                lbl.BringToFront();
+
+                Label lbl2 = new Label();
+                pnl.Controls.Add(lbl2);
+                lbl2.Location = new Point(120, 50 + (i + 1) * 30);
+                lbl2.Text = toDoGorev[i];
+                lbl2.ForeColor = Color.Black;
+                lbl2.Font = new Font("Segoe UI Semibold", 7, FontStyle.Bold);
+                lbl2.BringToFront();
+
+            }
+            pnl.Visible = false;
+        }
     }
 }

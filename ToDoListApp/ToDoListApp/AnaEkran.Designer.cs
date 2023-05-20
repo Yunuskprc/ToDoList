@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             panel1 = new Panel();
             pnl3ToDoList = new Panel();
             lblPnl3Dakika7 = new Label();
@@ -125,6 +126,7 @@
             button1 = new Button();
             label11 = new Label();
             pictureBox1 = new PictureBox();
+            timer1 = new System.Windows.Forms.Timer(components);
             panel1.SuspendLayout();
             pnl3ToDoList.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pctbxHavaDurumu).BeginInit();
@@ -1313,6 +1315,11 @@
             pictureBox1.TabIndex = 109;
             pictureBox1.TabStop = false;
             // 
+            // timer1
+            // 
+            timer1.Interval = 1000;
+            timer1.Tick += timer1_Tick;
+            // 
             // AnaEkran
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -1493,5 +1500,6 @@
         private PictureBox pictureBox2;
         private Label label11;
         private PictureBox pictureBox1;
+        private System.Windows.Forms.Timer timer1;
     }
 }
