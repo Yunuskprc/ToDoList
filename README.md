@@ -1,10 +1,10 @@
 # ToDoList
-ToDoList bizim okul projemizdir. Bu projede proje yönetimini ve github kullanımını geliştirdiğimiz bir proje.
+ToDoList bizim okul projemizdir. Bu projede proje yönetimini ve github kullanımını geliştirdik.
 Bu projede takvimden günlük görevlerinizi takvimde kaydedebilir bunları listeleyebilir ve o güne ait görevleri bir bildirim şeklinde ekrandan alabilirsiniz. 
 Ayrıca bu uygulamadan bazı şehirlerin günlük hava durumunu da kontrol edebilrisiniz.
 Uygulamaya önce kayıt olup sonra giriş yaparak ToDoList i kullanabilirsiniz.
 
-ToDoList uygulamasında veritabanı olarak MSSQL kullanılmıştır. Kullanıcı bilgileri buraya kaydediliyor. Güvenlik sorunları olmasının önüne geçmek için SHA-256 şifreleme algoritması ile
+ToDoList uygulamasında veritabanı olarak MSSQL kullanılmıştır. Kullanıcı bilgileri veritabanına kaydediliyor. Güvenlik sorunları olmasının önüne geçmek için SHA-256 şifreleme algoritması ile
 şifreleriniz veritabanına şifrelenmiş bir şekilde kayıt ediliyor. Ayrıca Veritabanında Görevler ve aylar tablosu var. Aylar tabloları ile Main Ekranda takvim oluşuyor. Görevler tablosunda ise
 o güne ait görev eklerseniz görevler oraya kaydediliyor.
 Uygulamada API kullanarak openweathermap den bazı şehirlerin anlık hava durumu bilgilerini çekip işleme yaparak o şehirlerin anlık hava durumuna ulaşabilirsiniz.
